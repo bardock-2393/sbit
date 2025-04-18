@@ -33,7 +33,7 @@
         
         #terminal-header {
             background: linear-gradient(to right, #333, #222);
-            padding: 10px 15px;
+            padding: 8px 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -46,8 +46,8 @@
         }
         
         .term-button {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -74,25 +74,30 @@
         
         .header-title {
             color: #cccccc;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             text-align: center;
             flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         #terminal-content {
-            padding: 15px;
+            padding: 10px;
             overflow-y: auto;
-            height: calc(100vh - 38px);
+            height: calc(100vh - 35px);
             background-color: #000000;
             color: #f0f0f0;
             position: relative;
+            font-size: 14px;
         }
         
         .command-line {
             display: flex;
             margin-bottom: 8px;
             opacity: 0;
+            flex-wrap: wrap;
         }
         
         .command-line.visible {
@@ -123,6 +128,7 @@
         
         .command {
             color: #f8f8f2;
+            word-break: break-all;
         }
         
         .output {
@@ -130,6 +136,7 @@
             line-height: 1.4;
             white-space: pre-wrap;
             opacity: 0;
+            word-break: break-word;
         }
         
         .output.visible {
@@ -160,15 +167,15 @@
         .tech-output {
             margin: 15px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
         }
         
         .tech-card {
             border: 1px solid #44475a;
             background-color: rgba(40, 42, 54, 0.8);
             border-radius: 5px;
-            padding: 15px;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -189,18 +196,19 @@
         }
         
         .tech-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 8px;
         }
         
         .tech-name {
             font-weight: bold;
             text-align: center;
             margin-bottom: 5px;
+            font-size: 12px;
         }
         
         .tech-desc {
-            font-size: 12px;
+            font-size: 10px;
             text-align: center;
             color: #bbb;
             display: none;
@@ -241,14 +249,15 @@
         .benefits-list {
             list-style-type: none;
             margin: 15px 0;
-            padding-left: 10px;
+            padding-left: 5px;
         }
         
         .benefit-item {
             margin: 8px 0;
             opacity: 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            font-size: 13px;
         }
         
         .benefit-item.visible {
@@ -257,15 +266,16 @@
         
         .benefit-icon {
             color: #50fa7b;
-            margin-right: 10px;
+            margin-right: 8px;
+            flex-shrink: 0;
         }
         
         .ascii-art {
             color: #8be9fd;
-            white-space: pre;
+            font-size: 8px;
             line-height: 1.2;
             margin: 10px 0;
-            font-size: 12px;
+            overflow-x: auto;
         }
         
         .loading-animation {
@@ -340,22 +350,27 @@
             margin-top: 15px;
             border-top: 1px solid #44475a;
             padding-top: 15px;
+            font-size: 12px;
         }
         
         .contact-item {
             display: flex;
             margin: 5px 0;
+            align-items: flex-start;
+            word-break: break-word;
         }
         
         .contact-icon {
-            margin-right: 10px;
+            margin-right: 8px;
             color: #8be9fd;
+            flex-shrink: 0;
         }
         
         .table {
             margin: 15px 0;
             width: 100%;
             border-collapse: collapse;
+            font-size: 12px;
         }
         
         .table th {
@@ -386,7 +401,7 @@
         
         .progress-container {
             width: 100%;
-            height: 20px;
+            height: 15px;
             background-color: #282a36;
             border-radius: 5px;
             overflow: hidden;
@@ -412,6 +427,7 @@
             cursor: pointer;
             opacity: 0;
             transition: all 0.3s ease;
+            font-size: 14px;
         }
         
         #apply-button.visible {
@@ -421,6 +437,63 @@
         #apply-button:hover {
             background-color: #8be9fd;
             transform: translateY(-2px);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+            .header-title {
+                font-size: 10px;
+            }
+            
+            #terminal-content {
+                font-size: 12px;
+                padding: 8px;
+            }
+            
+            .tech-output {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 8px;
+            }
+            
+            .tech-icon {
+                font-size: 20px;
+            }
+            
+            .tech-name {
+                font-size: 10px;
+            }
+            
+            .ascii-art {
+                font-size: 6px;
+            }
+            
+            .prompt {
+                margin-right: 5px;
+                font-size: 11px;
+            }
+            
+            .command-line {
+                margin-bottom: 5px;
+            }
+            
+            .command {
+                font-size: 11px;
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .benefit-item {
+                font-size: 11px;
+            }
+            
+            #apply-button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .contact-info, .contact-item {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
@@ -521,7 +594,7 @@
  __  __  _____    _    _   _   _
 |  \\/  || ____|  / \\  | \\ | |
 | |\\/| ||  _|   / _ \\ |  \\| |
-| |  | || |___ / ___ \\| |\\  ||
+| |  | || |___ / ___ \\| |\\  || 
 |_|  |_||_____/_/   \\_\\_| \\_| 
 `;
         
